@@ -30,6 +30,7 @@ func Main() {
 		cmd := os.Args[1]
 		if covArgs := os.Getenv("ETCDCOV_ARGS"); len(covArgs) > 0 {
 			args := strings.Split(os.Getenv("ETCDCOV_ARGS"), "\xe7\xcd")[1:]
+			// rootCmd 是使用的cobra包，做成一个命令行的方式
 			rootCmd.SetArgs(args)
 			cmd = "grpc-proxy"
 		}
