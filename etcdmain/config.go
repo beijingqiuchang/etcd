@@ -87,7 +87,7 @@ type config struct {
 
 // configFlags has the set of flags used for command line parsing a Config
 type configFlags struct {
-	flagSet      *flag.FlagSet
+	flagSet      *flag.FlagSet  // flag.FlagSet实例，用来解析数据
 	clusterState *flags.SelectiveStringValue
 	fallback     *flags.SelectiveStringValue
 	proxy        *flags.SelectiveStringValue

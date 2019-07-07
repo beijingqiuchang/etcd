@@ -55,6 +55,8 @@ func newGatewayCommand() *cobra.Command {
 		Use:   "gateway <subcommand>",
 		Short: "gateway related command",
 	}
+
+	// getway 的处理方法
 	lpc.AddCommand(newGatewayStartCommand())
 
 	return lpc
