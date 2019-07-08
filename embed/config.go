@@ -88,7 +88,9 @@ var (
 	DefaultInitialAdvertisePeerURLs = "http://localhost:2380"
 	DefaultAdvertiseClientURLs      = "http://localhost:2379"
 
+	// netutil.GetDefaultHost() 获取
 	defaultHostname   string
+	// netutil.GetDefaultHost() 获取
 	defaultHostStatus error
 )
 
@@ -176,6 +178,8 @@ type Config struct {
 	MaxTxnOps         uint  `json:"max-txn-ops"`
 	MaxRequestBytes   uint  `json:"max-request-bytes"`
 
+	// flags.UniqueURLsFromFlag(cfg.cf.flagSet, "listen-peer-urls") 获取
+	// 监听的用于节点之间通信的url，可监听多个，集群内部将通过这些url进行数据交互(如选举，数据同步等)
 	LPUrls, LCUrls []url.URL
 	APUrls, ACUrls []url.URL
 	ClientTLSInfo  transport.TLSInfo
