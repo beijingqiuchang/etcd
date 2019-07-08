@@ -60,7 +60,9 @@ func startEtcdOrProxyV2() {
 	defaultInitialCluster := cfg.ec.InitialCluster
 
 	// 实际调用 cfg.cf.flagSet.Parse
+	// cfg.parse是非导出的函数，因为都是在一个包内，所以可以调用
 	err := cfg.parse(os.Args[1:])
+	// 配置信息，也在上面的cfg.parse中过去到
 	lg := cfg.ec.GetLogger()
 	if err != nil {
 		if lg != nil {
