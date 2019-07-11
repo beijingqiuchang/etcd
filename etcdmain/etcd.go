@@ -97,6 +97,7 @@ func startEtcdOrProxyV2() {
 		}
 	}()
 
+	// defaultInitialCluster = default=http://localhost:2380
 	defaultHost, dhErr := (&cfg.ec).UpdateDefaultClusterFromName(defaultInitialCluster)
 	if defaultHost != "" {
 		if lg != nil {
@@ -116,7 +117,7 @@ func startEtcdOrProxyV2() {
 		}
 	}
 
-	if cfg.ec.Dir == "" {
+	if cfg.ec.Dir == "" {  // --data-dir参数指定
 		cfg.ec.Dir = fmt.Sprintf("%v.etcd", cfg.ec.Name)
 		if lg != nil {
 			lg.Warn(
@@ -132,7 +133,7 @@ func startEtcdOrProxyV2() {
 	var errc <-chan error
 
 	which := identifyDataDirOrDie(cfg.ec.GetLogger(), cfg.ec.Dir)
-	if which != dirEmpty {
+	if which != dirEmpty {  // 不为空
 		if lg != nil {
 			lg.Info(
 				"server has been already initialized",
